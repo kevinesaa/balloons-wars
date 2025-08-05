@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ddmni6dpr30"]
+
+[ext_resource type="Script" path="res://scripts/input_manager.gd" id="1_eg28h"]
+[ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
+size = Vector2(319.5, 17)
+
+[node name="level" type="Node2D"]
+
+[node name="inputManager" type="Node2D" parent="."]
+script = ExtResource("1_eg28h")
+
+[node name="ground" type="Node2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
+position = Vector2(0.25, 1.5)
+shape = SubResource("RectangleShape2D_0spnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+texture = ExtResource("1_mmh4m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
