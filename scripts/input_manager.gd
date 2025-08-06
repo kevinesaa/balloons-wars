@@ -2,10 +2,13 @@ class_name InputManager
 extends Node2D
 
 signal startGamePress()
+signal playerOnePress()
+signal playerTwoPress()
 
 var startPress:bool = false
 var gameReady:bool = false
 var procesingStart:bool = false
+var gameFinish:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,13 +28,18 @@ func _process(delta: float) -> void:
 	if(!gameReady):
 		return
 	
-	var playerOne = Input.is_action_just_pressed("player_one")
-	var playerTwo = Input.is_action_just_pressed("player_two")
-	if (playerOne):
-		print("hola player one")
-	if (playerTwo):
-		print("hola player two")
+	if(!gameFinish):
+		
+		var playerOne = Input.is_action_just_pressed("player_one")
+		var playerTwo = Input.is_action_just_pressed("player_two")
+		if (playerOne):
+			playerOnePress.emit()
+		if (playerTwo):
+			playerTwoPress.emit()
+
 
 func onGameTimerFinish() -> void:
-	print("ready")
 	gameReady = true
+
+func onGameFinish() -> void:
+	gameFinish = true

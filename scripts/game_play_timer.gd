@@ -1,8 +1,10 @@
 extends Timer
 
-@onready var gamePlayTimer: Timer = $"../startGameTimer"
+@onready var gamePlayTimer: Timer = $"../gamePlayTimer"
+@onready var labelGameplayTime: Label = $"../Label"
+
 var isPlaying : bool = false
-signal notifyTime()
+
 
 func _ready() -> void:
 	pass
@@ -10,7 +12,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if (isPlaying && !gamePlayTimer.is_stopped()):
-		notifyTime.emit(gamePlayTimer.time_left)
+		var time =  ceil(gamePlayTimer.time_left) 
+		labelGameplayTime.text = str(time) 
+		# notifyTime.emit(gamePlayTimer.time_left)
 		
 func  onInitGamePlay() -> void :
 	gamePlayTimer.start()
