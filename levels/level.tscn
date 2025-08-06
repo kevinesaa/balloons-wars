@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ddmni6dpr30"]
 
-[ext_resource type="Script" uid="uid://bhcd72lt5a3bw" path="res://scripts/input_manager.gd" id="1_eg28h"]
+[ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
 [ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
-[ext_resource type="Texture2D" uid="uid://cbldkqdanuym6" path="res://icon.svg" id="3_cwqvt"]
+[ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
+[ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
 size = Vector2(319.5, 17)
@@ -11,6 +12,9 @@ size = Vector2(319.5, 17)
 
 [node name="inputManager" type="Node2D" parent="."]
 script = ExtResource("1_eg28h")
+
+[node name="startGameTimerListener" type="Node2D" parent="."]
+script = ExtResource("2_cwqvt")
 
 [node name="ground" type="Node2D" parent="."]
 position = Vector2(0, 50)
@@ -33,7 +37,15 @@ texture = ExtResource("1_mmh4m")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 91)
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(12, 100)
-scale = Vector2(0.1875, 0.234375)
-texture = ExtResource("3_cwqvt")
+[node name="startGameTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="gamePlayTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+script = ExtResource("4_5mrsh")
+
+[connection signal="startGamePress" from="inputManager" to="startGameTimerListener" method="onStartPressButton"]
+[connection signal="timeout" from="startGameTimer" to="inputManager" method="onGameTimerFinish"]
+[connection signal="timeout" from="startGameTimer" to="gamePlayTimer" method="onInitGamePlay"]
