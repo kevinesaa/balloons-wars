@@ -11,11 +11,15 @@ func _process(delta: float) -> void:
 	pass 
 
 
-func onPlayerOnePressButtonLister():
-	playerOneRecord = playerOneRecord + 1
+func onPlayerOnePressButtonLister(isPress:bool):
+	
+	if(isPress):
+		playerOneRecord = playerOneRecord + 1
 	print(str("player one: ", playerOneRecord))
 	
 
-func onPlayerTwoPressButtonLister():
-	playerTwoRecord = playerTwoRecord + 1
+func onPlayerTwoPressButtonLister(isPress:bool):
+	
+	if(isPress):
+		playerTwoRecord = playerTwoRecord + 1
 	print(str("player two: ", playerTwoRecord))

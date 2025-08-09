@@ -2,8 +2,8 @@ class_name InputManager
 extends Node2D
 
 signal startGamePress()
-signal playerOnePress()
-signal playerTwoPress()
+signal playerOnePress(isPress:bool)
+signal playerTwoPress(isPress:bool)
 
 var startPress:bool = false
 var gameReady:bool = false
@@ -32,14 +32,15 @@ func _process(delta: float) -> void:
 		
 		var playerOne = Input.is_action_just_pressed("player_one")
 		var playerTwo = Input.is_action_just_pressed("player_two")
-		if (playerOne):
-			playerOnePress.emit()
-		if (playerTwo):
-			playerTwoPress.emit()
+		
+		playerOnePress.emit(playerOne)
+		playerTwoPress.emit(playerTwo)
 
 
+# para saber cuando esta listo para empezar el juego
 func onGameTimerFinish() -> void:
 	gameReady = true
 
+# el juego termino
 func onGameFinish() -> void:
 	gameFinish = true
