@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
 [ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
-[ext_resource type="Script" uid="uid://bldxhbqmwtygv" path="res://scripts/balloon_manager.gd" id="6_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://bd5g1kc2umaeo" path="res://entities/player.tscn" id="7_d5x7l"]
 [ext_resource type="Script" uid="uid://738ux40savlu" path="res://scripts/keypressSprite.gd" id="7_vnv7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
@@ -40,9 +40,6 @@ texture = ExtResource("1_mmh4m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 91)
-
-[node name="balloonManager" type="Node2D" parent="."]
-script = ExtResource("6_gjl0y")
 
 [node name="startGameTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -89,6 +86,12 @@ position = Vector2(255, 170)
 script = ExtResource("7_vnv7o")
 pressButtonPath = "res://sprites/inputs/k_key_press.png"
 unpressButtonPath = "res://sprites/inputs/k_key_unpress.png"
+
+[node name="PlayerOne" parent="." instance=ExtResource("7_d5x7l")]
+position = Vector2(65, 123)
+
+[node name="PlayerTwo" parent="." instance=ExtResource("7_d5x7l")]
+position = Vector2(255, 123)
 
 [connection signal="playerOnePress" from="inputManager" to="." method="onPlayerOnePressButtonLister"]
 [connection signal="playerOnePress" from="inputManager" to="playerOneKeySprite2D" method="onButtonPreesListener"]
