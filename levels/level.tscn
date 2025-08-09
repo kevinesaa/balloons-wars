@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ddmni6dpr30"]
 
 [ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
+[ext_resource type="Script" uid="uid://dsk5fnvixn35f" path="res://scripts/gameplayManager.gd" id="1_gjl0y"]
 [ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
 [ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
@@ -10,6 +11,7 @@
 size = Vector2(319.5, 17)
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_gjl0y")
 
 [node name="inputManager" type="Node2D" parent="."]
 script = ExtResource("1_eg28h")
@@ -75,6 +77,8 @@ text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="playerOnePress" from="inputManager" to="." method="onPlayerOnePressButtonLister"]
+[connection signal="playerTwoPress" from="inputManager" to="." method="onPlayerTwoPressButtonLister"]
 [connection signal="startGamePress" from="inputManager" to="startGameTimerListener" method="onStartPressButton"]
 [connection signal="timeout" from="startGameTimer" to="inputManager" method="onGameTimerFinish"]
 [connection signal="timeout" from="startGameTimer" to="gamePlayTimer" method="onInitGamePlay"]
