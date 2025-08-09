@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd5g1kc2umaeo"]
+[gd_scene load_steps=5 format=3 uid="uid://bd5g1kc2umaeo"]
 
 [ext_resource type="Texture2D" uid="uid://b6r3ipo7mwrkw" path="res://sprites/character-player-one/character-up.png" id="1_8rojy"]
 [ext_resource type="Script" uid="uid://bldxhbqmwtygv" path="res://scripts/balloon_manager.gd" id="1_e4p34"]
+[ext_resource type="Script" uid="uid://bqwn5figgfakw" path="res://scripts/Player.gd" id="1_rfe5m"]
 [ext_resource type="Texture2D" uid="uid://bdcpcjbl23oh4" path="res://sprites/basket.png" id="2_b0kkn"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_rfe5m")
 
 [node name="Ballon" type="Node2D" parent="."]
 script = ExtResource("1_e4p34")
