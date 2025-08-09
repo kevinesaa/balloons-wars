@@ -1,9 +1,11 @@
 extends Sprite2D
+class_name Balloon
 
-var ang = 20
-var radius = 30
-var origin = 20
-var speed = 3
+var ang = 0
+
+var origin = 0
+var radius = 0
+var speed = 0
 
 func _process(delta):
 	ang += speed * delta
