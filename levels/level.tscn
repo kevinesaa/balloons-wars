@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ddmni6dpr30"]
 
 [ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
 [ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
 [ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
+[ext_resource type="Texture2D" uid="uid://cbldkqdanuym6" path="res://icon.svg" id="5_safpt"]
+[ext_resource type="Script" uid="uid://4f1p3neijvyy" path="res://scripts/balloon.gd" id="6_gjl0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
 size = Vector2(319.5, 17)
@@ -47,7 +49,7 @@ one_shot = true
 script = ExtResource("4_5mrsh")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -61,6 +63,12 @@ grow_vertical = 2
 text = "00.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(73, 98)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_safpt")
+script = ExtResource("6_gjl0y")
 
 [connection signal="startGamePress" from="inputManager" to="startGameTimerListener" method="onStartPressButton"]
 [connection signal="timeout" from="startGameTimer" to="inputManager" method="onGameTimerFinish"]
