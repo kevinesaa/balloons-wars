@@ -21,3 +21,5 @@ func _process(delta: float) -> void:
 		var m = delta * speed
 		self.position.y = self.position.y - m
 		
+func  getPosition():
+	return self.position

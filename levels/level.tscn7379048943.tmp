@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3ddmni6dpr30"]
+
+[ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
+[ext_resource type="Script" uid="uid://dsk5fnvixn35f" path="res://scripts/gameplayManager.gd" id="1_gjl0y"]
+[ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
+[ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
+[ext_resource type="Script" uid="uid://c1avbayhqv720" path="res://scripts/cameraFollow.gd" id="2_d5x7l"]
+[ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
+[ext_resource type="PackedScene" uid="uid://bd5g1kc2umaeo" path="res://entities/player.tscn" id="7_d5x7l"]
+[ext_resource type="Script" uid="uid://738ux40savlu" path="res://scripts/keypressSprite.gd" id="7_vnv7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
+size = Vector2(319.5, 17)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_gjl0y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 91)
+script = ExtResource("2_d5x7l")
+
+[node name="inputManager" type="Node2D" parent="."]
+script = ExtResource("1_eg28h")
+
+[node name="startGameTimerListener" type="Node2D" parent="."]
+script = ExtResource("2_cwqvt")
+
+[node name="ground" type="Node2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
+position = Vector2(160, 122)
+shape = SubResource("RectangleShape2D_0spnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+position = Vector2(160, 122)
+texture = ExtResource("1_mmh4m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ground"]
+position = Vector2(160, -38)
+scale = Vector2(1, 1.5)
+texture = ExtResource("1_mmh4m")
+
+[node name="startGameTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="prepareGamePlayLabel" type="Label" parent="startGameTimer"]
+offset_left = 140.0
+offset_top = 75.0
+offset_right = 180.0
+offset_bottom = 98.0
+text = "GO!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gamePlayTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+script = ExtResource("4_5mrsh")
+
+[node name="gamePlayTimeLabel" type="Label" parent="gamePlayTimer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = 69.0
+offset_right = 14.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="playerOneKeySprite2D" type="Sprite2D" parent="."]
+position = Vector2(65, 170)
+script = ExtResource("7_vnv7o")
+pressButtonPath = "res://sprites/inputs/s_key_press.png"
+unpressButtonPath = "res://sprites/inputs/s_key_unpress.png"
+
+[node name="playerTwoKeySprite2D" type="Sprite2D" parent="."]
+position = Vector2(255, 170)
+script = ExtResource("7_vnv7o")
+pressButtonPath = "res://sprites/inputs/k_key_press.png"
+unpressButtonPath = "res://sprites/inputs/k_key_unpress.png"
+
+[node name="PlayerOne" parent="." instance=ExtResource("7_d5x7l")]
+position = Vector2(65, 123)
+
+[node name="PlayerTwo" parent="." instance=ExtResource("7_d5x7l")]
+position = Vector2(255, 123)
+
+[connection signal="playerOnePress" from="inputManager" to="." method="onPlayerOnePressButtonLister"]
+[connection signal="playerOnePress" from="inputManager" to="playerOneKeySprite2D" method="onButtonPreesListener"]
+[connection signal="playerTwoPress" from="inputManager" to="." method="onPlayerTwoPressButtonLister"]
+[connection signal="playerTwoPress" from="inputManager" to="playerTwoKeySprite2D" method="onButtonPreesListener"]
+[connection signal="startGamePress" from="inputManager" to="startGameTimerListener" method="onStartPressButton"]
+[connection signal="timeout" from="startGameTimer" to="inputManager" method="onGameTimerFinish"]
+[connection signal="timeout" from="startGameTimer" to="gamePlayTimer" method="onInitGamePlay"]
+[connection signal="timeout" from="gamePlayTimer" to="." method="onGameFinish"]
+[connection signal="timeout" from="gamePlayTimer" to="inputManager" method="onGameFinish"]

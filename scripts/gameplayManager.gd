@@ -39,6 +39,6 @@ func onGameFinish():
 	player_two.maxAltitude = baseAltitude + playerTwoRecord
 	
 	if(playerOneRecord < playerTwoRecord):
-		camera_2d.objectToFollow = player_one
+		camera_2d.setSetObjectToFollow(player_one) 
 	else:
-		camera_2d.objectToFollow = player_two
+		camera_2d.setSetObjectToFollow(player_two)
