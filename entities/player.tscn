@@ -1,19 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd5g1kc2umaeo"]
+[gd_scene load_steps=11 format=3 uid="uid://bd5g1kc2umaeo"]
 
 [ext_resource type="Texture2D" uid="uid://b6r3ipo7mwrkw" path="res://sprites/character-player-one/character-up.png" id="1_8rojy"]
 [ext_resource type="Script" uid="uid://bldxhbqmwtygv" path="res://scripts/balloon_manager.gd" id="1_e4p34"]
 [ext_resource type="Script" uid="uid://bqwn5figgfakw" path="res://scripts/Player.gd" id="1_rfe5m"]
 [ext_resource type="Texture2D" uid="uid://bdcpcjbl23oh4" path="res://sprites/basket.png" id="2_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://d4dji78tgyjd4" path="res://sprites/character-player-one/character-left.png" id="5_qsoyl"]
+[ext_resource type="Texture2D" uid="uid://bhu6qk7i8bk1p" path="res://sprites/character-player-one/character-right.png" id="6_6nm46"]
+[ext_resource type="Texture2D" uid="uid://c0do17fgdltya" path="res://sprites/character-player-one-two/character-up.png" id="7_ef06p"]
+[ext_resource type="Texture2D" uid="uid://bm4ds8sip4r4c" path="res://sprites/character-player-one-two/character-right.png" id="8_tjdhl"]
+[ext_resource type="Texture2D" uid="uid://duql1vbuspwws" path="res://sprites/character-player-one-two/character-left.png" id="9_x08pd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i623q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8rojy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qsoyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8rojy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6nm46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8rojy")
+}],
+"loop": false,
+"name": &"player_one",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ef06p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tjdhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ef06p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x08pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ef06p")
+}],
+"loop": false,
+"name": &"player_two",
+"speed": 15.0
+}]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_rfe5m")
 
-[node name="Ballon" type="Node2D" parent="."]
+[node name="BallonGroup" type="Node2D" parent="."]
 script = ExtResource("1_e4p34")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8rojy")
 
 [node name="Basket" type="Sprite2D" parent="."]
 position = Vector2(0, 16)
 texture = ExtResource("2_b0kkn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i623q")
+animation = &"player_one"

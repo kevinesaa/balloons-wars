@@ -19,6 +19,9 @@ var playerTwoRecord : int = 0
 
 
 func _ready() -> void:
+	player_one.animated_sprite_2d.animation = "player_one"
+	player_two.animated_sprite_2d.animation = "player_two"
+
 	pass
 
 
@@ -30,12 +33,16 @@ func onPlayerOnePressButtonLister(isPress:bool):
 	if(isPress):
 		playerOneRecord = playerOneRecord + 1
 		player_one_button_sound.play()
+		player_one.animated_sprite_2d.play("player_one")
+
 
 func onPlayerTwoPressButtonLister(isPress:bool):
 	
 	if(isPress):
 		playerTwoRecord = playerTwoRecord + 1
 		player_two_button_sound.play()
+		player_two.animated_sprite_2d.play("player_two")
+
 	
 func onGameFinish():
 	

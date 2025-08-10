@@ -8,13 +8,17 @@ var moving:bool = false
 
 var altitude:float
 var maxAltitude:float
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
-	
+	animated_sprite_2d.play("player_one")
 	pass
+	
 
 func _process(delta: float) -> void:
 	
+	
+
 	var thisY = self.position.y
 	if(moving && thisY > maxAltitude):
 		print(str(myName,": ","altitude: ",maxAltitude, "current y", thisY  ))
