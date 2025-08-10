@@ -26,4 +26,4 @@ func _physics_process(delta: float) -> void:
 func onButtonPreesListener(myIsPress:bool):
 	self.isPress = myIsPress
 	if(myIsPress):
-		counter = counter + (3 * minDelta)
+		counter = counter + (5 * minDelta)

@@ -1,7 +1,8 @@
 extends Node
 
 
-const baseAltitude:float = -300
+const baseAltitude:float = 200
+const winnerAltitude:float = 200
 const speed:float = 45
 
 
@@ -18,14 +19,14 @@ func _ready() -> void:
 func onPlayerOnePressButtonLister(isPress:bool):
 	
 	if(isPress):
-		playerOneRecord = playerOneRecord - 100
+		playerOneRecord = playerOneRecord + 1
 	
 	
 
 func onPlayerTwoPressButtonLister(isPress:bool):
 	
 	if(isPress):
-		playerTwoRecord = playerTwoRecord - 100
+		playerTwoRecord = playerTwoRecord + 1
 	
 func onGameFinish():
 	player_one.myName ="jugador 1"
@@ -38,7 +39,13 @@ func onGameFinish():
 	player_two.moving = true
 	player_two.maxAltitude = baseAltitude + playerTwoRecord
 	
-	if(playerOneRecord < playerTwoRecord):
-		camera_2d.setSetObjectToFollow(player_one) 
-	else:
-		camera_2d.setSetObjectToFollow(player_two)
+	if(playerOneRecord != playerTwoRecord):
+		if(playerOneRecord > playerTwoRecord):
+			player_one.maxAltitude = player_one.maxAltitude + winnerAltitude
+			camera_2d.setSetObjectToFollow(player_one) 
+		else:
+			player_two.maxAltitude = player_two.maxAltitude + winnerAltitude
+			camera_2d.setSetObjectToFollow(player_two)
+	
+	player_one.maxAltitude = (-1) * player_one.maxAltitude
+	player_two.maxAltitude = (-1) * player_two.maxAltitude
