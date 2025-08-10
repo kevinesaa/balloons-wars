@@ -1,21 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=11 format=3 uid="uid://c3ddmni6dpr30"]
 
 [ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
 [ext_resource type="Script" uid="uid://dsk5fnvixn35f" path="res://scripts/gameplayManager.gd" id="1_gjl0y"]
-[ext_resource type="Texture2D" uid="uid://vp0gaqd3plfl" path="res://sprites/ground.png" id="1_mmh4m"]
 [ext_resource type="Script" uid="uid://brj51lhlm4jec" path="res://scripts/startGameTimerListener.gd" id="2_cwqvt"]
 [ext_resource type="Script" uid="uid://c1avbayhqv720" path="res://scripts/cameraFollow.gd" id="2_d5x7l"]
 [ext_resource type="AudioStream" uid="uid://7cgmqrfannr2" path="res://music/balloon-incoming.mp3" id="2_rtcij"]
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://bd5g1kc2umaeo" path="res://entities/player.tscn" id="7_d5x7l"]
 [ext_resource type="Script" uid="uid://738ux40savlu" path="res://scripts/keypressSprite.gd" id="7_vnv7o"]
+[ext_resource type="Texture2D" uid="uid://3eo0dglu16kq" path="res://sprites/background.png" id="10_pb8y7"]
 [ext_resource type="AudioStream" uid="uid://c3dffktwwfr6g" path="res://sfx/sonidito.wav" id="10_ukwr8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
-size = Vector2(319.5, 17)
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_gjl0y")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(159, 89)
+texture = ExtResource("10_pb8y7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rtcij")
@@ -29,24 +30,6 @@ script = ExtResource("1_eg28h")
 
 [node name="startGameTimerListener" type="Node2D" parent="."]
 script = ExtResource("2_cwqvt")
-
-[node name="ground" type="Node2D" parent="."]
-position = Vector2(0, 50)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
-position = Vector2(160, 122)
-shape = SubResource("RectangleShape2D_0spnt")
-
-[node name="Sprite2D" type="Sprite2D" parent="ground"]
-position = Vector2(160, 122)
-texture = ExtResource("1_mmh4m")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ground"]
-position = Vector2(160, -38)
-scale = Vector2(1, 1.5)
-texture = ExtResource("1_mmh4m")
 
 [node name="startGameTimer" type="Timer" parent="."]
 wait_time = 3.0
