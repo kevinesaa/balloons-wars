@@ -16,10 +16,6 @@ size = Vector2(319.5, 17)
 [node name="level" type="Node2D"]
 script = ExtResource("1_gjl0y")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rtcij")
 
@@ -102,6 +98,20 @@ position = Vector2(65, 123)
 
 [node name="PlayerTwo" parent="." instance=ExtResource("7_d5x7l")]
 position = Vector2(255, 123)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 1.0
+offset_top = -114.0
+offset_right = 249.0
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+text = "Credits:
+Daniel Garcés
+Kevin Esaa
+
+Music by: 
+Theepicosity
+"
 
 [connection signal="playerOnePress" from="inputManager" to="." method="onPlayerOnePressButtonLister"]
 [connection signal="playerOnePress" from="inputManager" to="playerOneKeySprite2D" method="onButtonPreesListener"]

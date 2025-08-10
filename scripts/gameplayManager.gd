@@ -46,6 +46,8 @@ func onGameFinish():
 	player_two.moving = true
 	player_two.maxAltitude = baseAltitude + playerTwoRecord
 	
+	camera_2d.setSetObjectToFollow(player_one) 
+	
 	if(playerOneRecord != playerTwoRecord):
 		if(playerOneRecord > playerTwoRecord):
 			player_one.maxAltitude = player_one.maxAltitude + winnerAltitude
