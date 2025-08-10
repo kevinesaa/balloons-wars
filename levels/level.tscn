@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=12 format=3 uid="uid://c3ddmni6dpr30"]
 
 [ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
 [ext_resource type="Script" uid="uid://dsk5fnvixn35f" path="res://scripts/gameplayManager.gd" id="1_gjl0y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://bd5g1kc2umaeo" path="res://entities/player.tscn" id="7_d5x7l"]
 [ext_resource type="Script" uid="uid://738ux40savlu" path="res://scripts/keypressSprite.gd" id="7_vnv7o"]
+[ext_resource type="AudioStream" uid="uid://c3dffktwwfr6g" path="res://sfx/sonidito.wav" id="10_ukwr8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0spnt"]
 size = Vector2(319.5, 17)
@@ -112,6 +113,12 @@ Kevin Esaa
 Music by: 
 Theepicosity
 "
+
+[node name="playerTwoButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ukwr8")
+
+[node name="playerOneButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ukwr8")
 
 [connection signal="playerOnePress" from="inputManager" to="." method="onPlayerOnePressButtonLister"]
 [connection signal="playerOnePress" from="inputManager" to="playerOneKeySprite2D" method="onButtonPreesListener"]

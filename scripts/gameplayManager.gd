@@ -14,6 +14,9 @@ var playerTwoRecord : int = 0
 @onready var camera_2d: CameraFollow = $Camera2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var player_one_button_sound: AudioStreamPlayer = $playerOneButtonSound
+@onready var player_two_button_sound: AudioStreamPlayer = $playerTwoButtonSound
+
 
 func _ready() -> void:
 	pass
@@ -26,11 +29,13 @@ func onPlayerOnePressButtonLister(isPress:bool):
 	
 	if(isPress):
 		playerOneRecord = playerOneRecord + 1
+		player_one_button_sound.play()
 
 func onPlayerTwoPressButtonLister(isPress:bool):
 	
 	if(isPress):
 		playerTwoRecord = playerTwoRecord + 1
+		player_two_button_sound.play()
 	
 func onGameFinish():
 	
