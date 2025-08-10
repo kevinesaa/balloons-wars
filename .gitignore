@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/godot,windows,linux,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=godot,windows,linux,macos
 
+builds/*
+
 ### Godot ###
 # Godot 4+ specific ignores
 .godot/

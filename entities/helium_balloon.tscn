@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bw6mu5tgwrtk7" path="res://scripts/helium_balloon.gd" id="1_3lyi4"]
 [ext_resource type="Script" uid="uid://c85awetdg3ng1" path="res://scripts/line.gd" id="1_ukl64"]
-[ext_resource type="Texture2D" uid="uid://cbldkqdanuym6" path="res://icon.svg" id="2_3lyi4"]
+[ext_resource type="Texture2D" uid="uid://u7hpyxd6vru3" path="res://sprites/balloon.png" id="3_3lyi4"]
 [ext_resource type="Script" uid="uid://4f1p3neijvyy" path="res://scripts/balloon.gd" id="3_xjlpg"]
 
 [node name="helium_balloon" type="Node2D"]
@@ -13,5 +13,5 @@ script = ExtResource("1_ukl64")
 
 [node name="balloon" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_3lyi4")
+texture = ExtResource("3_3lyi4")
 script = ExtResource("3_xjlpg")
