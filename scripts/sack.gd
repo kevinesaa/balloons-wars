@@ -1,5 +1,5 @@
 extends Node2D
-class_name BowlingBall
+class_name Sack
 
 @onready var x_initial
 @onready var y_initial

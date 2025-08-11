@@ -17,7 +17,7 @@ var playerTwoRecord : int = 0
 @onready var player_one_button_sound: AudioStreamPlayer = $playerOneButtonSound
 @onready var player_two_button_sound: AudioStreamPlayer = $playerTwoButtonSound
 
-var bowling_ball: PackedScene = preload("res://entities/bowling_ball.tscn")
+var sack: PackedScene = preload("res://entities/sack.tscn")
 
 func _ready() -> void:
 	player_one.animated_sprite_2d.animation = "player_one_idle"
@@ -35,7 +35,7 @@ func onPlayerOnePressButtonLister(isPress:bool):
 		playerOneRecord = playerOneRecord + 1
 		player_one_button_sound.play()
 		player_one.animated_sprite_2d.play("player_one")
-		player_one.throwBalls(15)
+		player_one.throwSack(15)
 	
 
 func onPlayerTwoPressButtonLister(isPress:bool):
@@ -44,7 +44,7 @@ func onPlayerTwoPressButtonLister(isPress:bool):
 		playerTwoRecord = playerTwoRecord + 1
 		player_two_button_sound.play()
 		player_two.animated_sprite_2d.play("player_two")
-		player_two.throwBalls(-15)
+		player_two.throwSack(-15)
 	
 func onGameFinish():
 	

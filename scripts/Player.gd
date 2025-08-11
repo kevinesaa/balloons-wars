@@ -10,7 +10,7 @@ var altitude:float
 var maxAltitude:float
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var bowling_ball: PackedScene = preload("res://entities/bowling_ball.tscn")
+var sack: PackedScene = preload("res://entities/sack.tscn")
 
 func _ready() -> void:
 	animated_sprite_2d.play("player_one")
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 		var m = delta * speed
 		self.position.y = self.position.y - m
 
-func throwBalls(side):
-	var instance: BowlingBall = bowling_ball.instantiate()
+func throwSack(side):
+	var instance: Sack = sack.instantiate()
 	instance.x_initial=getPosition().x+side
 	instance.y_initial=getPosition().y
 	get_parent().add_child(instance)
