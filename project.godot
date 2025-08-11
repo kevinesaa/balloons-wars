@@ -13,7 +13,7 @@ config_version=5
 config/name="balloon-wars"
 run/main_scene="res://levels/level.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://cbldkqdanuym6"
+config/icon="uid://beh5jtdcc7aw4"
 config/windows_native_icon="res://icon.ico"
 
 [display]
