@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3wab0tmo3myd"]
+
+[ext_resource type="Script" uid="uid://8v40fw12ducn" path="res://scripts/bowling_ball.gd" id="1_g8nu2"]
+[ext_resource type="Texture2D" uid="uid://cvq0qvys8na5y" path="res://sprites/sack.png" id="2_g8nu2"]
+
+[node name="BowlingBall" type="Node2D"]
+script = ExtResource("1_g8nu2")
+
+[node name="Heavy" type="Sprite2D" parent="."]
+texture = ExtResource("2_g8nu2")
