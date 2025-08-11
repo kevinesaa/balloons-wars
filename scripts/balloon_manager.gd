@@ -3,7 +3,8 @@ extends Node2D
 var helium_balloon: PackedScene = preload("res://entities/helium_balloon.tscn")
 
 func _ready():
-	create_balloons(-35, 35)#left group
+	create_balloons(-35, 35)
+	seed(42)
 	
 
 func create_balloons(from,to):

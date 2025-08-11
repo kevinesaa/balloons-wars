@@ -12,5 +12,6 @@ script = ExtResource("1_3lyi4")
 script = ExtResource("1_ukl64")
 
 [node name="balloon" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_3lyi4")
 script = ExtResource("3_xjlpg")
