@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ddmni6dpr30"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ddmni6dpr30"]
 
 [ext_resource type="Script" uid="uid://lrqiv0orm7ym" path="res://scripts/input_manager.gd" id="1_eg28h"]
 [ext_resource type="Script" uid="uid://dsk5fnvixn35f" path="res://scripts/gameplayManager.gd" id="1_gjl0y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dajjc74u20g0n" path="res://scripts/game_play_timer.gd" id="4_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://bd5g1kc2umaeo" path="res://entities/player.tscn" id="7_d5x7l"]
 [ext_resource type="Script" uid="uid://738ux40savlu" path="res://scripts/keypressSprite.gd" id="7_vnv7o"]
+[ext_resource type="FontFile" uid="uid://betv0cxk3sok5" path="res://fonts/NESCYRILLIC.TTF" id="8_hy0rb"]
 [ext_resource type="Texture2D" uid="uid://3eo0dglu16kq" path="res://sprites/background.png" id="10_pb8y7"]
 [ext_resource type="AudioStream" uid="uid://c3dffktwwfr6g" path="res://sfx/sonidito.wav" id="10_ukwr8"]
 
@@ -44,6 +45,7 @@ offset_left = 140.0
 offset_top = 75.0
 offset_right = 180.0
 offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("8_hy0rb")
 text = "GO!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,6 +66,7 @@ offset_right = 14.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_hy0rb")
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -87,11 +90,11 @@ position = Vector2(65, 123)
 position = Vector2(255, 123)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 1.0
-offset_top = -114.0
-offset_right = 249.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
+offset_left = 16.0
+offset_top = -145.0
+offset_right = 264.0
+offset_bottom = -35.0
+theme_override_fonts/normal_font = ExtResource("8_hy0rb")
 text = "Credits:
 Daniel Garcés
 Kevin Esaa
